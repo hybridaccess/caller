@@ -50,7 +50,7 @@ jobs:
           echo "4:"          
           echo "${{ needs.changes.outputs.apps-changed }}"
           echo "5:"
-          echo ${{ matrix.apps.*.[0] }}
+          # echo ${{ matrix.apps.*.[0] }}
           # echo ${{ matrix.apps.*[0] }}
           echo ${{ matrix.apps.*.sit2-plp }}
           echo "6:"
