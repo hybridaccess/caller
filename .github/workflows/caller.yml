@@ -30,9 +30,13 @@ jobs:
   
   sit2:
     needs: [changes]
+    if: |
+      needs.changes.outputs.apps-changed != '' &&
+      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
+      contains(needs.changes.outputs.apps-changed, 'sit2')
     strategy:
       matrix:
-        apps: ${{ fromJSON(needs.changes.outputs.apps-changed }}
+        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
     runs-on: ubuntu-latest
     steps:
       - run: |
