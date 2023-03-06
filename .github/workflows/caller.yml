@@ -28,5 +28,5 @@ jobs:
         id: debug
         run: |
           set -x
-          echo "${{ secrets.['env.PRD']_BACKEND_CONFIG }}"
+          echo "${{ secrets.[env.PRD]_BACKEND_CONFIG }}"
 
