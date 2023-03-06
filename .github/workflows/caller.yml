@@ -2,6 +2,10 @@ name: Call reusable workflow
 
 on:
   workflow_dispatch:
+  
+env:
+  dev: NONPROD
+  prd: PROD
 
 jobs:
   remote:
@@ -9,5 +13,5 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: ${{ secrets.NONPROD_SUBSCRIPTION_ID }}
-      BACKEND_CONFIG: ${{ secrets.NONPROD_BACKEND_CONFIG }}
+      SUBSCRIPTION_ID: ${{ secrets.$dev_SUBSCRIPTION_ID }}
+      BACKEND_CONFIG: ${{ secrets.$prd_BACKEND_CONFIG }}
