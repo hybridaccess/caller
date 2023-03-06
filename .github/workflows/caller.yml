@@ -18,9 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.3.0
       - uses: dorny/paths-filter@v2
-        id: filters
+        id: filter
         with:
-          filter: |
+          filters: |
             sit2-pdp:
               - 'akamai/sit2-pdp.tfvars'
             sit2-plp:
