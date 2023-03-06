@@ -17,8 +17,8 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: echo "${{ secrets.$DEV_SUBSCRIPTION_ID }}"
-      BACKEND_CONFIG: echo "${{ secrets.['env.PRD']_BACKEND_CONFIG }}"
+      SUBSCRIPTION_ID: echo "${{ secrets.SUBSCRIPTION_ID }}"
+      BACKEND_CONFIG: echo "${{ secrets.BACKEND_CONFIG }}"
       
   debug:
     name: Debug
