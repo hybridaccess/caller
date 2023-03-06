@@ -6,11 +6,11 @@ on:
   
   push:
     branches:
-      - main
+      - master
 
 jobs:
   remote:
-    uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
+    uses:  hybridaccess/shared-workflow/.github/workflows/called.yml
     with:
       name: test
     secrets:
