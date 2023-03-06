@@ -1,0 +1,15 @@
+name: Call reusable workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  remote:
+    uses:  hybridaccess/called/workflows/called.yaml@main
+    with:
+      name: test
+    secrets:
+      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
