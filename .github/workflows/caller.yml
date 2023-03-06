@@ -13,5 +13,5 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: ${{ secrets.$dev_SUBSCRIPTION_ID }}
-      BACKEND_CONFIG: ${{ secrets.$prd_BACKEND_CONFIG }}
+      SUBSCRIPTION_ID: ${{ secrets.[env.dev]_SUBSCRIPTION_ID }}
+      BACKEND_CONFIG: ${{ secrets.[env.prd]_BACKEND_CONFIG }}
