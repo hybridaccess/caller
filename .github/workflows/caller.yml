@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.3.0
       - uses: dorny/paths-filter@v2
-        id: filter
+        id: filters
         with:
           filter: |
             sit2-pdp:
