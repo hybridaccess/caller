@@ -52,7 +52,9 @@ jobs:
           echo "5:"
           echo ${{ matrix.apps.*.sit2-plp }}
           echo "6:"
-          echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }} 
+          echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}
+          files=$(echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }})
+          echo files[0]
          
   
   remote:
