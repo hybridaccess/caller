@@ -11,6 +11,32 @@ env:
   PRD: PROD
 
 jobs:
+
+  changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filter: |
+            sit2-pdp:
+              - 'akamai/sit2-pdp.tfvars'
+            sit2-plp:
+              - 'akamai/sit2-pdp.tfvars'              
+  
+  sit2:
+    needs: [changes]
+    strategy:
+      matrix:
+        apps: ${{ fromJSON(needs.changes.outputs.apps-changed }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set -x
+          echo "tf plan - sit2"
+  
   remote:
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
     if: ${{ false }}
@@ -19,14 +45,5 @@ jobs:
     secrets:
       SUBSCRIPTION_ID: echo "${{ secrets.SUBSCRIPTION_ID }}"
       BACKEND_CONFIG: echo "${{ secrets.BACKEND_CONFIG }}"
-      
-  debug:
-    name: Debug
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug
-        id: debug
-        run: |
-          set -x
-          echo ${{ secrets.[env.PRD]_BACKEND_CONFIG }}
+
 
