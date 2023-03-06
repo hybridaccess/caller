@@ -13,8 +13,20 @@ env:
 jobs:
   remote:
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
+    if: ${{ false }}
     with:
       name: test
     secrets:
       SUBSCRIPTION_ID: echo "${{ secrets.$DEV_SUBSCRIPTION_ID }}"
       BACKEND_CONFIG: echo "${{ secrets.['env.PRD']_BACKEND_CONFIG }}"
+      
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        id: debug
+        run: |
+          set -x
+          echo "${{ secrets.['env.PRD']_BACKEND_CONFIG }}"
+
