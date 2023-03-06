@@ -41,9 +41,14 @@ jobs:
     steps:
       - run: |
           set -x
-          echo "tf plan - sit2"
-          echo "needs.changes.outputs.apps-changed"
-          echo ${{ needs.changes.outputs.apps-changed }}
+          echo "1:"
+          echo ${{ matrix.apps }}
+          echo "2:"
+          echo ${{ matrix.apps[0] }}
+          echo "3:"
+          echo ${{ matrix.apps['sit2-plp'] }}          
+          echo "4:"          
+          echo "${{ needs.changes.outputs.apps-changed }}
   
   remote:
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
