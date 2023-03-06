@@ -16,5 +16,5 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: echo "${{ secrets.['env.DEV']_SUBSCRIPTION_ID }}"
+      SUBSCRIPTION_ID: echo "${{ secrets.$DEV_SUBSCRIPTION_ID }}"
       BACKEND_CONFIG: echo "${{ secrets.['env.PRD']_BACKEND_CONFIG }}"
