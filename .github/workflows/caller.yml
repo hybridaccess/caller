@@ -1,12 +1,7 @@
 name: Call reusable workflow
 
 on:
-
   workflow_dispatch:
-  
-  push:
-    branches:
-      - master
 
 jobs:
   remote:
