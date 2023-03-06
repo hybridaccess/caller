@@ -10,7 +10,7 @@ on:
 
 jobs:
   remote:
-    uses:  hybridaccess/shared-workflow/.github/workflows/called.yml
+    uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
     with:
       name: test
     secrets:
