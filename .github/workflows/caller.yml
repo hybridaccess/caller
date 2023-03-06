@@ -42,6 +42,8 @@ jobs:
       - run: |
           set -x
           echo "tf plan - sit2"
+          echo "needs.changes.outputs.apps-changed"
+          echo ${{ needs.changes.outputs.apps-changed }}
   
   remote:
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
