@@ -54,7 +54,7 @@ jobs:
           echo "6:"
           echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}
           files=$(echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }})
-          echo files[0]
+          echo $files[0]
          
   
   remote:
