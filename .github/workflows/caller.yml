@@ -24,7 +24,9 @@ jobs:
             sit2-pdp:
               - 'akamai/sit2-pdp.tfvars'
             sit2-plp:
-              - 'akamai/sit2-pdp.tfvars'              
+              - 'akamai/sit2-pdp.tfvars'   
+    outputs:
+      apps-changed: ${{steps.filter.outputs.changes }}
   
   sit2:
     needs: [changes]
