@@ -36,8 +36,8 @@ jobs:
         id: getenv
         run: |
           set -x
-          echo "dev=NONPROD" >> $GITHUB_ENV
-          echo "prd=PROD" >> $GITHUB_ENV
+          echo "dev=NONPROD" >> "$GITHUB_OUTPUT"
+          echo "prd=PROD" >> "$GITHUB_OUTTPU"
     outputs:
       env-dev: ${{ steps.getenv.outputs.dev }}
       env-prd: ${{ steps.getenv.outputs.prd }}
