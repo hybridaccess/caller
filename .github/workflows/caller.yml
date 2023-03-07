@@ -79,7 +79,7 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: ${{ secrets['dev'] }}
+      SUBSCRIPTION_ID: ${{ secrets['needs.prepare.outputs.env-dev'] }}
       BACKEND_CONFIG: $(echo "${{ secrets['env.prd'] }}")
 
 
