@@ -1,8 +1,8 @@
 name: Call reusable workflow
 
 env:
-  dev: dev1
-  prd: prd1
+  dev: SUBSCRIPTION_ID
+  prd: BACKEND_CONFIG
 on:
   workflow_dispatch:
   push:
@@ -79,6 +79,7 @@ jobs:
     with:
       name: test
     secrets:
-      SUB_ID: $(echo ${{ secrets['dev'] }})
+      SUBSCRIPTION_ID: $(echo ${{ secrets['dev'] }})
+      BACKEND_CONFIG: $(echo ${{ secrets['prd'] }})
 
 
