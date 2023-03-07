@@ -79,7 +79,7 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: ${{ secrets['dev'] }}
-      BACKEND_CONFIG: $(echo ${{ secrets['prd'] }})
+      SUBSCRIPTION_ID: ${{ secrets.['dev'] }}
+      BACKEND_CONFIG: $(echo ${{ secrets.['prd'] }})
 
 
