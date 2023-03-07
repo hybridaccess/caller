@@ -1,8 +1,8 @@
 name: Call reusable workflow
 
 env:
-  dev: SUBSCRIPTION_ID
-  prd: BACKEND_CONFIG
+  dev: NONPROD_BACKEND_CONFIG
+  prd: PROD_SUBSCRIPTION_ID
 on:
   workflow_dispatch:
   push:
