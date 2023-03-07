@@ -71,9 +71,13 @@ jobs:
   
   
   remote:
+    needs: [changes,prepare]
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
+    env:
+      dev: ${{ needs.prepare.outputs.env-dev }}
     with:
       name: test
-    secrets: inherit
+    secrets:
+      SUB_ID: ${{ secrets.['env.dev']_SUBSCRIPTION_ID }}
 
 
