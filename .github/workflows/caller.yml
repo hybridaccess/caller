@@ -1,5 +1,8 @@
 name: Call reusable workflow
 
+env:
+  dev: dev1
+  prd: prd1
 on:
   workflow_dispatch:
   push:
@@ -76,6 +79,6 @@ jobs:
     with:
       name: test
     secrets:
-      SUB_ID: $(echo ${{ secrets[dev] }})
+      SUB_ID: $(echo ${{ secrets[env.dev] }})
 
 
