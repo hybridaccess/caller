@@ -80,6 +80,6 @@ jobs:
       name: test
     secrets:
       SUBSCRIPTION_ID: ${{ secrets['dev'] }}
-      BACKEND_CONFIG: $(echo "${{ secrets[env.prd] }}")
+      BACKEND_CONFIG: $(echo "${{ secrets['env.prd'] }}")
 
 
