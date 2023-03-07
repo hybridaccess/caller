@@ -78,6 +78,6 @@ jobs:
     with:
       name: test
     secrets:
-      SUB_ID: ${{ secrets.['env.dev']_SUBSCRIPTION_ID }}
+      SUB_ID: ${{ secrets.$dev_SUBSCRIPTION_ID }}
 
 
