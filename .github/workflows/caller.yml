@@ -55,9 +55,27 @@ jobs:
       - run: |
           set -x
           echo ${{ matrix.apps }}
-          echo "${{ matrix.apps }}=$(echo ${{ matrix.apps }} | tr '-' '_')" >> $GITHUB_ENV
+          echo "${{ matrix.apps }}=$(echo ${{ matrix.apps }} | tr '-' '_')" >> $GITHUB_OUTPUT
   
-  
+
+#  get-config:
+#    needs: [changes,prepare]
+#    if: |
+#      needs.changes.outputs.apps-changed != '' &&
+#      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
+#      contains(needs.changes.outputs.apps-changed, 'sit2')
+#    strategy:
+#      matrix:
+#        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: |
+#          set -x
+#          echo ${{ matrix.apps }}
+#          echo ${{ needs.prepare.outputs.sit2_pdp}}
+#          echo ${{ needs.prepare.outputs.sit2_plp}}
+
+
   sit2:
     needs: [changes,prepare]
     if: |
