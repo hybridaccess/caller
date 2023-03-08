@@ -79,9 +79,10 @@ jobs:
     with:
       name: test
     secrets:
-      SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
-      # BACKEND_CONFIG: $(echo "${{ secrets['env.prd'] }}")
-      BACKEND_CONFIG: ${{ format('secrets.{0}', needs.prepare.outputs.env-prd ) }}
+      # SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
+      SUBSCRIPTION_ID: ${{ var.SUBSCRIPTION_ID }}
+      BACKEND_CONFIG: ${{ var.BACKEND_CONFIG }}
+      # BACKEND_CONFIG: ${{ format('secrets.{0}', needs.prepare.outputs.env-prd ) }}
 
 
 
