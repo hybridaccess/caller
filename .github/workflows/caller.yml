@@ -41,36 +41,36 @@ jobs:
       env-dev: ${{ steps.getenv.outputs.dev }}
       env-prd: ${{ steps.getenv.outputs.prd }}
 
-#  sit2:
-#    needs: [changes,prepare]
-#    if: |
-#      needs.changes.outputs.apps-changed != '' &&
-#      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
-#      contains(needs.changes.outputs.apps-changed, 'sit2')
-#    strategy:
-#      matrix:
-#        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
-#    runs-on: ubuntu-latest
-#    steps:
-#      - run: |
-#          set -x
-#          echo "1:"
-#          echo ${{ matrix.apps }}
-#          echo "2:"
-#          echo ${{ matrix.apps[0] }}
-#          echo "3:"
-#          echo ${{ matrix.apps['sit2-plp'] }}
-#          echo "4:"
-#          echo "${{ needs.changes.outputs.apps-changed }}"
-#          echo "5:"
-#          echo ${{ matrix.apps.*.sit2-plp }}
-#          echo "6:"
-#          echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}
-#          files=$(echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }})
-#          # for val in ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}; do export $val="$val" && echo $val; done
-#          echo "7:"
-#          echo "${{ needs.prepare.outputs.env-dev }}"
-#          echo "${{ needs.prepare.outputs.env-prd }}"
+  sit2:
+    needs: [changes,prepare]
+    if: |
+      needs.changes.outputs.apps-changed != '' &&
+      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
+      contains(needs.changes.outputs.apps-changed, 'sit2')
+    strategy:
+      matrix:
+        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set -x
+          echo "1:"
+          echo ${{ matrix.apps }}
+          echo "2:"
+          echo ${{ matrix.apps[0] }}
+          echo "3:"
+          echo ${{ matrix.apps['sit2-plp'] }}
+          echo "4:"
+          echo "${{ needs.changes.outputs.apps-changed }}"
+          echo "5:"
+          echo ${{ matrix.apps.*.sit2-plp }}
+          echo "6:"
+          echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}
+          files=$(echo ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }})
+          # for val in ${{ join(fromJson(needs.changes.outputs.apps-changed), ' ') }}; do export $val="$val" && echo $val; done
+          echo "7:"
+          echo "${{ needs.prepare.outputs.env-dev }}"
+          echo "${{ needs.prepare.outputs.env-prd }}"
   
   
   sit2:
@@ -86,7 +86,7 @@ jobs:
     with:
       name: test
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
-      backend_config: ${{ vars[format('{0}', ${{ matrix.apps }})] }}
+      backend_config: ${{ vars[format('{0}',matrix.apps)] }}
 #    secrets:
 #      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
 #      BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
