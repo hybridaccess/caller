@@ -27,19 +27,6 @@ jobs:
     outputs:
       apps-changed: ${{steps.filter.outputs.changes }}
 
-#  prepare:
-#    needs: [changes]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: get-env
-#        id: getenv
-#        run: |
-#          set -x
-#          echo "dev=NONPROD_BACKEND_CONFIG" >> "$GITHUB_OUTPUT"
-#          echo "prd=PROD_BACKEND_CONFIG" >> "$GITHUB_OUTPUT"
-#    outputs:
-#      env-dev: ${{ steps.getenv.outputs.dev }}
-#      env-prd: ${{ steps.getenv.outputs.prd }}
 
   prepare:
     needs: [changes]
