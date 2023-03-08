@@ -83,7 +83,7 @@ jobs:
        BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
 
 
-//vars work
+# vars work
 #  sit2:
 #    needs: [changes,prepare]
 #    if: |
