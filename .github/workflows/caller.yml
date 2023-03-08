@@ -86,7 +86,7 @@ jobs:
     with:
       name: test
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
-      backend_config: ${{ vars['matrix.apps'] }}
+      backend_config: ${{ vars.${{ matrix.apps }} }}
 #    secrets:
 #      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
 #      BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
