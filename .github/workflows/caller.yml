@@ -20,9 +20,9 @@ jobs:
         id: filter
         with:
           filters: |
-            sit2-pdp:
+            sit2_pdp:
               - 'akamai/sit2-pdp.tfvars'
-            sit2-plp:
+            sit2_plp:
               - 'akamai/sit2-plp.tfvars'   
     outputs:
       apps-changed: ${{steps.filter.outputs.changes }}
