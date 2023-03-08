@@ -79,8 +79,25 @@ jobs:
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
       backend_config: ${{ vars[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
     secrets:
-       SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
-       BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',needs.prepare.outputs['matrix.apps'])] }}
+       SUBSCRIPTION_ID: ${{ secrets['matrix.apps'] }}
+       BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
 
 
-
+//vars work
+#  sit2:
+#    needs: [changes,prepare]
+#    if: |
+#      needs.changes.outputs.apps-changed != '' &&
+#      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
+#      contains(needs.changes.outputs.apps-changed, 'sit2')
+#    uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
+#    strategy:
+#      matrix:
+#        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
+#    with:
+#      name: test
+#      subscription_id: ${{ vars.SUBSCRIPTION_ID }}
+#      backend_config: ${{ vars[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
+#    secrets:
+#      SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
+#      BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',needs.prepare.outputs['matrix.apps'])] }}
