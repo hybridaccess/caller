@@ -59,22 +59,22 @@ jobs:
               
   
 
-  get-config:
-    needs: [changes,prepare]
-    if: |
-      needs.changes.outputs.apps-changed != '' &&
-      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
-      contains(needs.changes.outputs.apps-changed, 'sit2')
-    strategy:
-      matrix:
-        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          set -x
-          echo ${{ matrix.apps }}
-          echo "sit2 pdp is: ${{ needs.prepare.outputs.sit2-pdp}}"
-          echo "sit2 plp is: ${{ needs.prepare.outputs.sit2-plp}}"
+#  get-config:
+#    needs: [changes,prepare]
+#    if: |
+#      needs.changes.outputs.apps-changed != '' &&
+#      toJson(fromJson(needs.changes.outputs.apps-changed)) != '[]' &&
+#      contains(needs.changes.outputs.apps-changed, 'sit2')
+#    strategy:
+#      matrix:
+#        apps: ${{ fromJSON(needs.changes.outputs.apps-changed) }}
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: |
+#          set -x
+#          echo ${{ matrix.apps }}
+#          echo "sit2 pdp is: ${{ needs.prepare.outputs.sit2-pdp}}"
+#          echo "sit2 plp is: ${{ needs.prepare.outputs.sit2-plp}}"
 
 
   sit2:
@@ -90,7 +90,7 @@ jobs:
     with:
       name: test
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
-      backend_config: ${{ vars[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
+      backend_config: ${{ vars[format('{0}_BACKEND_CONFIG', 'matrix.apps')] }}
     secrets:
        SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
        BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',needs.prepare.outputs['matrix.apps'])] }}
