@@ -78,9 +78,11 @@ jobs:
     uses:  hybridaccess/shared-workflow/.github/workflows/called.yml@master
     with:
       name: test
+      subscription_id: ${{ vars.SUBSCRIPTION_ID }}
+      backend_config: ${{ vars.BACKEND_CONFIG }}
     secrets:
-      SUBSCRIPTION_ID: ${{ vars.SUBSCRIPTION_ID }}
-      BACKEND_CONFIG: ${{ vars.BACKEND_CONFIG }}
+      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
       # SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
       # BACKEND_CONFIG: ${{ format('secrets.{0}', needs.prepare.outputs.env-prd ) }}
 
