@@ -72,8 +72,8 @@ jobs:
       - run: |
           set -x
           echo ${{ matrix.apps }}
-          echo ${{ needs.prepare.outputs.sit2_pdp}}
-          echo ${{ needs.prepare.outputs.sit2_plp}}
+          echo "sit2 pdp is: ${{ needs.prepare.outputs.sit2-pdp}}"
+          echo "sit2 plp is: ${{ needs.prepare.outputs.sit2-plp}}"
 
 
   sit2:
