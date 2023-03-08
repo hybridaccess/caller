@@ -79,7 +79,7 @@ jobs:
     with:
       name: test
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
-      backend_config: ${{ vars.BACKEND_CONFIG }}
+      backend_config: ${{ vars.SIT2_PDP_BACKEND_CONFIG }}
     secrets:
       SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
       BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
