@@ -79,9 +79,9 @@ jobs:
     with:
       name: test
     secrets:
-      # SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
       SUBSCRIPTION_ID: ${{ vars.SUBSCRIPTION_ID }}
       BACKEND_CONFIG: ${{ vars.BACKEND_CONFIG }}
+      # SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
       # BACKEND_CONFIG: ${{ format('secrets.{0}', needs.prepare.outputs.env-prd ) }}
 
 
