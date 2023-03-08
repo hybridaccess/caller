@@ -20,9 +20,9 @@ jobs:
         id: filter
         with:
           filters: |
-            sit2_pdp:
+            sit2-pdp:
               - 'akamai/sit2-pdp.tfvars'
-            sit2_plp:
+            sit2-plp:
               - 'akamai/sit2-plp.tfvars'   
     outputs:
       apps-changed: ${{steps.filter.outputs.changes }}
@@ -87,11 +87,9 @@ jobs:
       name: test
       subscription_id: ${{ vars.SUBSCRIPTION_ID }}
       backend_config: ${{ vars[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
-#    secrets:
-#      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
-#      BACKEND_CONFIG: ${{ secrets.BACKEND_CONFIG }}
-#      # SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
-#      # BACKEND_CONFIG: ${{ format('secrets.{0}', needs.prepare.outputs.env-prd ) }}
+    secrets:
+       SUBSCRIPTION_ID: ${{ secrets.needs.prepare.outputs.env-dev }}
+       BACKEND_CONFIG: ${{ secrets[format('{0}_BACKEND_CONFIG',matrix.apps)] }}
 
 
 
