@@ -19,10 +19,11 @@ jobs:
         id: filter
         run: |
           set -x
+          echo $mysec
           echo "dev: ${{ env.dev }}" | sed 's/./& /g' 
           echo "prd: ${{ env.prd }}" | sed 's/./& /g' 
           echo "mysec: ${{ env.mysec }}" | sed 's/./& /g' 
-          echo ${{ secrets.AKAMAI }} | base64 -d > .edgerc
-          ls -al
-          cat .edgerc
+          # echo ${{ secrets.AKAMAI }} | base64 -d > .edgerc
+          # ls -al
+          # cat .edgerc
 
