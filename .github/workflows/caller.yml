@@ -5,9 +5,9 @@ env:
   prd: PROD_SUBSCRIPTION_ID
 on:
   workflow_dispatch:
-  push:
-    branches:
-       - master
+#  push:
+#    branches:
+#       - master
   
 jobs:
 

@@ -19,5 +19,7 @@ jobs:
         id: filter
         run: |
           set -x
-          echo "${{ env.mysec }}"
+          echo "dev: ${{ env.dev }}"
+          echo "prd: ${{ env.prd }}"
+          echo "mysec: ${{ env.mysec }}"
 
