@@ -1,0 +1,23 @@
+name: Read secrets into env vars
+
+env:
+  dev: NONPROD_BACKEND_CONFIG
+  prd: PROD_SUBSCRIPTION_ID
+  mysec: ${{ secrets.akamai }}
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        id: filter
+        run: |
+          set -x
+          echo "${{ env.mysec }}"
+
