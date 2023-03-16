@@ -23,5 +23,6 @@ jobs:
           echo "prd: ${{ env.prd }}" | sed 's/./& /g' 
           echo "mysec: ${{ env.mysec }}" | sed 's/./& /g' 
           echo "${{ secrets.AKAMAI }}" | base64 -d > .edgerc
+          ls -al
           cat .edgerc
 
