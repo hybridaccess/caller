@@ -19,7 +19,7 @@ jobs:
         id: filter
         run: |
           set -x
-          'echo "$mysec" > edgerc'
+          echo "$mysec" > edgerc
           cat edgerc
           echo "dev: ${{ env.dev }}" | sed 's/./& /g' 
           echo "prd: ${{ env.prd }}" | sed 's/./& /g' 
